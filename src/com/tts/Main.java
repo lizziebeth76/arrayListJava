@@ -33,7 +33,7 @@ public class Main {
 
 //      CREATE OUR ARRAY LIST IN WHICH USER INPUT WILL BE STORED. THE DATA TYPE FOR THIS LIST IS INTEGER
 //      INITIAL CAPACITY DESCRIBES THE (STILL FLEXIBLE) NUMBER OF ITEMS "ALLOWED" IN THE LIST, BUT NOT REALLY EVEN, CUZ IT'S FLEXIBLE, AND DOES NOT HAVE TO CONTAIN A VALUE AT ALL
-        ArrayList<Integer> randomNumbers = new ArrayList<>(5);
+        ArrayList<Integer> randomNumbers = new ArrayList<>();
 
         System.out.println("Please enter a random number: ");
         //        Integer someNum = Integer.parseInt(scanner.nextLine()); ---from jake:  to adjust25 (right side of equation) and its pals
@@ -48,25 +48,21 @@ public class Main {
         System.out.println("Please enter a fifth random number: ");
         int intFive = scanner.nextInt();
 
-//        calls the function in the main method
-//        getSum(randomNumbers);
-//        getProduct(randomNumbers);
-//        getMax(randomNumbers);
-//        getMin(randomNumbers);
-
-//
-//        ArrayList<Integer> randomNumbers = new ArrayList<Integer>(5);
-
         //.add appends elements to the END of the array (an array specifically):
         randomNumbers.add(intOne);
         randomNumbers.add(intTwo);
         randomNumbers.add(intThree);
         randomNumbers.add(intFour);
         randomNumbers.add(intFive);
+//        calls the function in the main method
+        getSum(randomNumbers);
+        getProduct(randomNumbers);
+        getMax(randomNumbers);
+        getMin(randomNumbers);
 
 //        I BELIEVE THAT WHEN I INPUT THE CALLS BELOW, IT WAS A DUPLICATE EFFORT/ ATTEMPT TO CALL THE FUNCTIONS FROM THE MAIN METHOD
 //        I'M PRETTY SURE (IT WOULD APPEAR!) THAT I DON'T ENTIRELY UNDERSTAND WHAT I MEAN WHEN I SAY "CALL THE FUNCTION FROM THE MAIN METHOD
-//        EVEN THO I THINK IT OUGHT TO BE A LOT LIKE IT SOUNDS -- HAALLLLPPPPPP MEEEE, GOOGLE HAS FAILED ME AND I AM TIRED
+//        EVEN THO I THINK IT OUGHT TO BE A LOT LIKE IT SOUNDS -- HAALLLLPPPPPP MEEEE, GOOGLE HAS FAILED ME AND I AM TIRED - do NOT DO THIS:
 
 //        randomNumbers.stream().mapToDouble(intOne);
 //        randomNumbers.stream().mapToDouble(intOne);
@@ -99,17 +95,18 @@ public class Main {
 //        randomNumbers.stream().min(intFive);
     }
 
-    //    NO ERRORS BELOW, BUT NONE OF THE MATH CURRENTLY WORKS - ONLY THE DEFAULT VALUES DISPLAY
+    //    NO ERRORS BELOW (at one point that was true, now that is not), BUT NONE OF THE MATH CURRENTLY WORKS - ONLY THE DEFAULT VALUES DISPLAY
 
         public static void getSum(ArrayList<Integer> randomNumbers) {
 // .size is for array lists, and .length is for array
             int sum = 0;
-
+        System.out.println("What the heck??" + randomNumbers.toString());
             for (Integer randomNumber : randomNumbers) {
                 sum += randomNumber;
             }
             System.out.println("This is the sum of the numbers you typed in: " + sum);
         }
+
     public static void getProduct(ArrayList<Integer> randomNumbers) {
 // .size is for array lists, and .length is for array
         int product = 1;
@@ -137,16 +134,21 @@ public class Main {
     private static void getMax(ArrayList<Integer> randomNumbers) {
         int max = 0;
         for (Integer randomNumber : randomNumbers) {
-            getMax.randomNumber() = max;
+//            .randomNumber() = max; --jake had me comment this out
+            if (randomNumber > max) max = randomNumber;
         }
         System.out.println("This is the LARGEST of the numbers you typed in: " + max);
     }
-    private static void getMax(ArrayList<Integer> randomNumbers) {
-        int max = 0;
-        for (Integer randomNumber : randomNumbers) {
-            getMin.randomNumber() = min;
+    private static void getMin(ArrayList<Integer> randomNumbers) {
+        int min = 0;
+        if(!randomNumbers.isEmpty()) {
+            min = randomNumbers.get(0);
         }
-        System.out.println("This is the LARGEST of the numbers you typed in: " + min);
+        for (Integer randomNumber : randomNumbers) {
+//            .randomNumber() = min; -- jake had me comment this out
+            if (randomNumber < min) min = randomNumber;
+        }
+        System.out.println("This is the smol'est of the numbers you typed in: " + min);
     }
 //    private static void getMin(ArrayList<Integer> randomNumbers) {
 //
